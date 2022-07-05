@@ -1,0 +1,6 @@
+/archive-data.json
+/todo-data.json
+
+node_modules
+/yarn.lock
+/package.lock.json

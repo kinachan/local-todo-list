@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" href="./css/bulma.css" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <title>TODOリスト</title>
+  <meta name="author" content="Kinachan0725">
+</head>
+
+<body>
+  <div class="container custom-container">
+    <div class="columns">
+      <div class="column is-full">
+        <div class="is-size-1">
+          TODOリスト
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-7">
+        <input id="todo" class="input" name="todo" placeholder="TODOリスト">
+      </div>
+      <div class="column is-1">
+        <button id="add" class="button is-primary is-light">Add</button>
+      </div>
+      <div class="column is-1">
+        <button id="archive" class="button is-danger is-light">Archive</button>
+      </div>
+    </div>
+
+    <div class="is-size-4">
+      TODO List
+    </div>
+    <div class="columns">
+      <div class="column is-full">
+        <ui id="todo-list">
+          <li></li>
+        </ui>
+      </div>
+    </div>
+
+    <div class="is-size-4">
+      アーカイブ
+    </div>
+    <div class="columns">
+      <div class="column is-full">
+        <ui id="archive-list">
+          <li></li>
+        </ui>
+      </div>
+
+
+    </div>
+
+
+  </div>
+  <script src="./js/index.js"></script>
+</body>

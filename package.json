@@ -1,0 +1,16 @@
+{
+  "name": "local-todo-list",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1",
+    "fs": "^0.0.1-security",
+    "nodemon": "^2.0.18",
+    "opener": "^1.5.2"
+  },
+  "scripts": {
+    "dev": "nodemon -e ejs,js,json,html node app.js opener http://localhost:3000",
+    "prod": "node app.js"
+  }
+}
