@@ -65,9 +65,16 @@ const moveArchive = async (req, res) => {
   });
 }
 
+/**アーカイブ削除 */
+const removeArchive = async (req, res) => {
+  await writeFile('./archive-data.json', []);
+  return res.json(true);
+}
+
 module.exports = {
   getTodo,
   getArchive,
   addTodo,
-  moveArchive
+  moveArchive,
+  removeArchive
 };

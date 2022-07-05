@@ -47,6 +47,11 @@ const archiveListRead = async () => {
 }
 
 const dataRender = async (element, data, isTodo) => {
+  if (data.length === 0) {
+    element.innerHTML = '';
+    return data;
+  }
+
   const html = data.map(x => renderParts(x, isTodo)).join('');
   element.innerHTML = html;
 
@@ -94,12 +99,6 @@ const sendAddEvent = async () => {
   todoInput.focus();
 }
 
-todoInput.addEventListener('keydown', async (e) => {
-  if (e.code === 'Enter') {
-    await sendAddEvent();
-  }
-});
-
 const addButton = document.getElementById('add');
 addButton.addEventListener('click', sendAddEvent);
 
@@ -118,4 +117,18 @@ archiveButton.addEventListener('click', async (ev) => {
   await dataRender(archiveListElement, data.archive, false);
 
   bindCheckboxEvent();
+});
+
+const removeButton = document.getElementById('remove');
+removeButton.addEventListener('click', async () => {
+  const res = await fetch('/remove', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+
+  if (res.ok) {
+    await dataRender(archiveListElement, [], false);
+  }
 })
