@@ -1,3 +1,7 @@
 li {
   list-style-type: none;
 }
+
+.checkbox > ul {
+  font-size: 12px;
+}

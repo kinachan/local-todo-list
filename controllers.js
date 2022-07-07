@@ -16,6 +16,8 @@ const parse = async (filePath) => {
   return JSON.parse(fileString);
 }
 
+
+
 /**TODO取得 */
 const getTodo = async (req, res) => {
   return await sendJsonResponse(req, res, './todo-data.json');

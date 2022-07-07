@@ -19,7 +19,7 @@
 
     <div class="columns">
       <div class="column is-7">
-        <input id="todo" class="input" name="todo" placeholder="TODOリスト">
+        <input tabindex="1" id="todo" class="input" name="todo" placeholder="TODOリスト">
       </div>
       <div class="column is-1">
         <button id="add" class="button is-primary is-light">Add</button>
@@ -32,25 +32,31 @@
       </div>
     </div>
 
-    <div class="is-size-4">
+    <div class="columns">
+      <div class="column is-7">
+        <input tabindex="2" id="description" class="input" name="description" placeholder="説明。任意項目です">
+      </div>
+    </div>
+
+    <div class="is-size-4 has-text-primary">
       TODO List
     </div>
     <div class="columns">
       <div class="column is-full">
-        <ui id="todo-list">
+        <ul id="todo-list">
           <li></li>
-        </ui>
+        </ul>
       </div>
     </div>
 
-    <div class="is-size-4">
+    <div class="is-size-4 has-text-danger">
       アーカイブ
     </div>
     <div class="columns">
       <div class="column is-full">
-        <ui id="archive-list">
+        <ul id="archive-list">
           <li></li>
-        </ui>
+        </ul>
       </div>
 
 
