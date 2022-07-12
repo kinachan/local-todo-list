@@ -120,6 +120,7 @@ class TodoClient {
     this.bindCheckboxEvent();
   
     this.todoInput.value = '';
+    this.descriptionInput.value = '';
     this.todoInput.focus();
   }
 
