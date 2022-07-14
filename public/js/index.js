@@ -33,10 +33,19 @@ class TodoClient {
       this.checkedList.push(parseInt(id, 10));
       ev.target.setAttribute('checked', 'checked');
     } else {
-      const index = checkedList.indexOf(id);
+      const index = this.checkedList.indexOf(id);
       this.checkedList.splice(index, 1);
       ev.target.removeAttribute('checked');
     }
+  }
+
+  async onDoubleClickCheck(ev) {
+    const id = ev.target.getAttribute('data-id');
+    const res = await fetch('./todo/' + id, {
+      method: 'GET',
+    });
+
+
   }
 
   bindCheckboxEvent() {
@@ -45,6 +54,14 @@ class TodoClient {
       elem.removeEventListener('change', (ev) => this.onChangeCheckbox(ev));
       elem.addEventListener('change', (ev) => this.onChangeCheckbox(ev));
     });
+  }
+
+  bindUpdateEvent() {
+    const checkboxes = document.querySelectorAll('.check');
+    checkboxes.forEach(elem => {
+      elem.removeEventListener('dblclick', async (ev) => await this.onDoubleClickCheck(ev))
+      document.addEventListener('dblclick', async (ev) => await this.onDoubleClickCheck(ev))
+    })
   }
 
   async readTodo() {
@@ -57,6 +74,7 @@ class TodoClient {
     await this.dataRender(this.todoListElement, data, true);
   
     this.bindCheckboxEvent();
+    // this.bindUpdateEvent();
   }
 
   async readArchive() {
@@ -80,12 +98,18 @@ class TodoClient {
   }
 
   renderParts(data, isTodo) {
+    const httpRegpex = /https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#\u3000-\u30FE\u4E00-\u9FA0\uFF01-\uFFE3]+/g;
+
+    const description = data.description == null ? '' 
+      : data.description.replace(httpRegpex, '<a target="_blank" href="$&">$&</a>');
+   
+
     const childUl = data.description == null 
       ? ''
       : `
         <ul>
           <li>
-            ${data.description}
+            ${description}
           </li>
         </ul>
       `;

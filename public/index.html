@@ -18,11 +18,15 @@
     </div>
 
     <div class="columns">
+      <input type="hidden" id="update-id">
       <div class="column is-7">
         <input tabindex="1" id="todo" class="input" name="todo" placeholder="TODOリスト">
       </div>
-      <div class="column is-1">
+      <div class="column add-area is-1">
         <button id="add" class="button is-primary is-light">Add</button>
+      </div>
+      <div class="is-hide update-area column is-1">
+        <button id="update" class="button is-primary is-hight">Update</button>
       </div>
       <div class="column is-1">
         <button id="archive" class="button is-danger is-light">Archive</button>

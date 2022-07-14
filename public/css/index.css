@@ -5,3 +5,7 @@ li {
 .checkbox > ul {
   font-size: 12px;
 }
+
+.is-hide {
+  display: none;
+}

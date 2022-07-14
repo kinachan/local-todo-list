@@ -1,12 +1,16 @@
 const controllers = require('./controllers');
-const { addTodo, getArchive, getTodo, moveArchive, removeArchive } = controllers;
+const { addTodo, getArchive, getAllTodo, getTodo, moveArchive, removeArchive } = controllers;
 
 const wrap = fn => (req, res, next) => fn(req, res, next).catch(next);
 
 module.exports = function(app) {
   app.get('/todo', wrap(async (req, res) => {
-    return await getTodo(req, res);
+    return await getAllTodo(req, res);
   }));
+
+  app.get('/todo/:id', wrap(async (req, res) => {
+    return await getTodo(req, res);
+  }))
 
   app.get('/archive', wrap(async (req, res) => {
     return await getArchive(req, res);
